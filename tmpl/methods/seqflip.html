@@ -1,0 +1,124 @@
+{% extends 'methodTemplate.html' %}
+{% block methodExp %}
+<div>
+	<h1 class="methodName">.seqFlip()</h1>
+	<h3 class="parameterSign">.seqFlip(imgID[,options])</h3>
+	<div class="parameterExp">
+		<h5>imgID</h5>
+		<div class="typeExp">
+			Type: number or string
+		</div>
+		<p class="parameterDescription">
+			The 'imgID' is decided according to the original HTML &lt;img&gt; order and its 'alt' attribute.
+		</p>
+		<pre class="sampleCode">&lt;div id="tiles"&gt;
+  &lt;img src="img/photo1.jpg" alt="photo1" /&gt; &lt;!-- .seqFlip(0) or .seqFlip('photo1') calls this image --&gt;
+  &lt;img src="img/photo2.jpg" alt="photo2" /&gt; &lt;!-- .seqFlip(1) or .seqFlip('photo2') --&gt;
+  &lt;img src="img/photo3.jpg" alt="photo3" /&gt; &lt;!-- .seqFlip(2) or .seqFlip('photo3') --&gt;
+  &lt;img src="img/photo4.jpg" alt="photo4" /&gt; &lt;!-- .seqFlip(3) or .seqFlip('photo4') --&gt;
+&lt;/div&gt;</pre>
+	</div>
+	<div class="parameterExp">
+		<h5>options</h5>
+		<div class="typeExp">
+			Type: object
+		</div>
+		<p class="parameterDescription">
+			A map of additional options to pass to the method.
+		</p>
+		<ul class="optionsList">
+			<li>
+				<h5>
+					delay<span class="defaultInfo">(default: 100)</span>
+				</h5>
+				<div class="typeExp">
+					Type: number
+				</div>
+				<p class="parameterDescription">
+					The time that is between a flip of the tile and a flip of the next tile.
+				</p>
+			</li>
+			<li>
+				<h5>
+					isZtoA<span class="defaultInfo">(default: false)</span>
+				</h5>
+				<div class="typeExp">
+					Type: boolean
+				</div>
+				<p class="parameterDescription">
+					If this value is true, the tiles flip in sequence toward the top from the end.
+				</p>
+			</li>
+			<li>
+				<h5>
+					isAxisX<span class="defaultInfo">(default: false)</span>
+				</h5>
+				<div class="typeExp">
+					Type: boolean
+				</div>
+				<p class="parameterDescription">
+					If this value is true, the axis of rotation of the tile is set to X-axis. If false, Y-axis.
+				</p>
+			</li>
+			<li>
+				<h5>
+					isReverse<span class="defaultInfo">(default: false)</span>
+				</h5>
+				<div class="typeExp">
+					Type: boolean
+				</div>
+				<p class="parameterDescription">
+					If this value is true, reverse the direction of rotation of the tile.
+				</p>
+				
+			</li>
+		</ul>
+	</div>
+	<p class="description">
+		When the .seqFlip() method is called, all of 'isActive' tiles flip in sequece.<br />
+		'isActive' is the attribute that represents the state of the tile. In the state immediately after construction of Tilamic object, all of its tiles are 'isActive'.For more information about 'isActive' see the <a href="filter">.filter()</a> method.
+	</p>
+	<h4 class="sampleText">
+		Example
+	</h4>
+	<pre class="sampleCode">$(function(){
+  var tilamic = new Tilamic('#tiles', {
+    'aspectRatio': 853/ 1280
+  });
+
+  var isZtoA = false;
+  var imgID = 1;
+  
+  setInterval(function(){
+    tilamic.seqFlip(imgID % 4, {
+      'isZtoA': isZtoA
+    });
+    imgID++;
+    isZtoA = !isZtoA;
+  }, 3000);
+});</pre>
+	<div id="tiles" style="width: 60%;" class="preview">
+		<img src="../img/photo1.jpg" alt="photo1" />
+		<img src="../img/photo2.jpg" alt="photo2" />
+		<img src="../img/photo3.jpg" alt="photo3" />
+		<img src="../img/photo4.jpg" alt="photo4" />
+	</div>
+	<script>
+		$(function(){
+			var tilamic = new Tilamic('#tiles', {
+				'aspectRatio': 853/ 1280
+			});
+			
+			var isZtoA = false;
+			var imgID = 1;
+			setInterval(function(){
+				tilamic.seqFlip(imgID % 4, {
+					'isZtoA': isZtoA
+				});
+				imgID++;
+				isZtoA = !isZtoA;
+			}, 3000);
+		});
+	</script>
+</div>
+{% endblock %}

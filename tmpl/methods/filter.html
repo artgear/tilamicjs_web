@@ -1,0 +1,111 @@
+{% extends 'methodTemplate.html' %}
+{% block methodExp %}
+<div>
+	<h1 class="methodName">.filter()</h1>
+	<h3 class="parameterSign">.filter(function)</h3>
+	<div class="parameterExp">
+		<h5>function</h5>
+		<div class="typeExp">
+			Type: Function(integer index, integer col, integer row) => Boolean
+		</div>
+		<p class="parameterDescription">
+			A function used as a test for each tile.
+		</p>
+	</div>
+	<p class="description">
+		The .filter() method constructs a new Tilamic object that have the tiles 'isActive' status is modified.<br />
+		'isActive' status represents whether a callee method affects the tile.<br />
+		For each tile, if the function returns true, the tile will be 'isActive' in the filtered Tilamic obejct.
+	</p>
+	<h4 class="sampleText">
+		Example
+	</h4>
+	<pre class="sampleCode">$(function(){
+  var tilamic = new Tilamic('#tiles', {
+    'aspectRatio': 853/ 1280
+  });
+
+  var imgID = 1;
+  setInterval(function(){
+    tilamic.filter(function(index, col, row){
+      return col == 0;
+    }).seqFlip(imgID % 4);
+    imgID++;
+  }, 2000);
+});</pre>
+	<div id="tiles" style="width: 60%;" class="preview">
+		<img src="../img/photo1.jpg" alt="photo1" />
+		<img src="../img/photo2.jpg" alt="photo2" />
+		<img src="../img/photo3.jpg" alt="photo3" />
+		<img src="../img/photo4.jpg" alt="photo4" />
+	</div>
+	<script>
+		$(function(){
+			var tilamic = new Tilamic('#tiles', {
+				'aspectRatio': 853/ 1280
+			});
+			
+			var imgID = 1;
+			setInterval(function(){
+				tilamic.filter(function(index, col, row){
+					return col == 0;
+				}).seqFlip(imgID % 4);
+				imgID++;
+			}, 2000);
+		});
+	</script>
+	<p class="description">
+		The filter method never change caller object.<br />
+		And you can do this.
+	</p>
+	<pre class="sampleCode">$(function(){
+  var tilamic = new Tilamic('#tiles2', {
+    'aspectRatio': 853/ 1280
+  });
+  
+  var checkerA = tilamic.filter(function(index, col, row){
+    return (col + row) % 2 == 0;
+  });
+  var checkerB = tilamic.filter(function(index, col, row){
+    return (col + row) % 2 == 1;
+  });
+
+  var imgID = 0;
+  setInterval(function(){
+    imgID++;
+    checkerA.flip(imgID % 4);
+    setTimeout(function(){
+      checkerB.flip(imgID % 4);
+    }, 500);
+  }, 2000);
+});</pre>
+	<div id="tiles2" style="width: 60%;" class="preview">
+		<img src="../img/photo1.jpg" alt="photo1" />
+		<img src="../img/photo2.jpg" alt="photo2" />
+		<img src="../img/photo3.jpg" alt="photo3" />
+		<img src="../img/photo4.jpg" alt="photo4" />
+	</div>
+	<script>
+		$(function(){
+			var tilamic = new Tilamic('#tiles2', {
+				'aspectRatio': 853/ 1280
+			});
+			var checkerA = tilamic.filter(function(index, col, row){
+				return (col + row) % 2 == 0;
+			});
+			var checkerB = tilamic.filter(function(index, col, row){
+				return (col + row) % 2 == 1;
+			});
+			
+			var imgID = 0;
+			setInterval(function(){
+				imgID++;
+				checkerA.flip(imgID % 4);
+				setTimeout(function(){
+					checkerB.flip(imgID % 4);
+				}, 500);
+			}, 2000);
+		});
+	</script>
+</div>
+{% endblock %}

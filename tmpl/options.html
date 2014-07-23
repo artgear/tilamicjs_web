@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<title>tilamic.js Constructor Options</title>
+		<link rel="shortcut icon" href="img/tilamicjs_fav.ico" />
+		<link href="stylesheets/common.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="stylesheets/options.css" media="all" rel="stylesheet" type="text/css" />
+{% include 'common/googleAnalytics.html' ignore missing %}
+	</head>
+	<body>
+{% include 'common/header.html' %}
+		<div class="content">
+			<h1>Constructor Options</h1>
+			<p class="basicExp">
+				The number of tiles is represented by the product of the rows and cols.<br />
+				The more tiles, the more resources. You should keep them within reasonable bounds.
+			</p>
+			<ul>
+				<li class="options">
+					<h2>rows</h2>
+					<p> 
+						The number of rows.
+					</p>
+					<div class="format">
+						default: 3<br />
+						options: integer
+					</div>
+				</li>
+				<li class="options">
+					<h2>cols</h2>
+					<p>
+						The number of columns.
+					</p>
+					<div class="format">
+						default: 3<br />
+						options: integer
+					</div>
+				</li>
+				<li class="options">
+					<h2>attrPrefix</h2>
+					<p>
+						Adding prefix to the html class names tilamic.js uses.
+					</p>
+					<div class="format">
+						default: '' (blank string)<br />
+						options: string
+					</div>
+				</li>
+				<li class="options">
+					<h2>aspectRatio</h2>
+					<p>
+						This item is required if you make your content with responsive design.<br />
+						Setting the area width using a percent value and aspectRatio, the content will be elastic.<br /> 
+						The value = height / width.<br />
+						In case you don't need flexibility, set both the area width and height.
+					</p>
+					<div class="format">
+						default: null<br />
+						options: float
+					</div>
+				</li>
+				<li class="options">
+					<h2>isCSS3Supported</h2>
+					<p>
+						Usually this item is set to the appropriate value automatically.<br />
+						If you want fallback action on all browsers, set this false.
+					</p>
+					<div class="format">
+						default: true if the browser supports CSS3 features or else false.<br />
+						options: boolean
+					</div>
+				</li>
+			</ul>
+		</div>
+{% include 'common/footer.html' %}
+	</body>
+</html>

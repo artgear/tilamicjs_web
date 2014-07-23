@@ -1,0 +1,68 @@
+{% extends 'methodTemplate.html' %}
+{% block methodExp %}
+<div>
+	<h1 class="methodName">.resize()</h1>
+	<h3 class="parameterSign">.resize()</h3>
+	<div class="parameterExp">
+		<p class="parameterDescription">
+			This method does not accept any arguments.
+		</p>
+	</div>
+	<p class="description">
+		When the .resize() method is called, size and position of all tiles will be re-computed.<br />
+		The .resize() method resize ALL tiles ALWAYS. This method is not affected by 'isActive' status of the tile.
+	</p>
+	<h4 class="sampleText">
+		Example
+	</h4>
+	<pre class="sampleCode">&lt;div id="tiles" style="width: 60%;" class="preview"&gt;
+  &lt;img src="../img/photo1.jpg" alt="photo1" /&gt;
+  &lt;img src="../img/photo2.jpg" alt="photo2" /&gt;
+  &lt;img src="../img/photo3.jpg" alt="photo3" /&gt;
+  &lt;img src="../img/photo4.jpg" alt="photo4" /&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  $(function(){
+    var tilamic = new Tilamic('#tiles', {
+      'aspectRatio': 853/ 1280
+    });
+    
+    $(window).on('resize', function(e){
+      tilamic.resize();
+    });
+    
+    var imgID = 1;
+    setInterval(function(){
+      tilamic.flip(imgID % 4);
+      imgID++;
+    }, 2000);
+  });
+&lt;/script&gt;</pre>
+	<p class="sampleExp">
+		&lt;&lt;&lt; Resize your browser. &gt;&gt;&gt;
+	</p>
+	<div id="tiles" style="width: 60%; margin-top: 0;" class="preview">
+		<img src="../img/photo1.jpg" alt="photo1" />
+		<img src="../img/photo2.jpg" alt="photo2" />
+		<img src="../img/photo3.jpg" alt="photo3" />
+		<img src="../img/photo4.jpg" alt="photo4" />
+	</div>
+	<script>
+		$(function(){
+			var tilamic = new Tilamic('#tiles', {
+				'aspectRatio': 853/ 1280
+			});
+			
+			$(window).on('resize', function(e){
+				tilamic.resize();
+			});
+			
+			var imgID = 1;
+			setInterval(function(){
+				tilamic.flip(imgID % 4);
+				imgID++;
+			}, 2000);
+		});
+	</script>
+</div>
+{% endblock %}

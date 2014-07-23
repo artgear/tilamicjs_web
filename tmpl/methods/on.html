@@ -1,0 +1,87 @@
+{% extends 'methodTemplate.html' %}
+{% block methodExp %}
+<div>
+	<h1 class="methodName">.on()</h1>
+	<h3 class="parameterSign">.on(events[, data], handler)</h3>
+	<div class="parameterExp">
+		<h5>events</h5>
+		<div class="typeExp">
+			Type: String
+		</div>
+		<p class="parameterDescription">
+			One or more space-separated event types.
+		</p>
+	</div>
+	<div class="parameterExp">
+		<h5>data</h5>
+		<div class="typeExp">
+			Type: Object
+		</div>
+		<p class="parameterDescription">
+			Data to be passed to the handler in jQuery-Event object when an event is triggered.
+		</p>
+	</div><div class="parameterExp">
+		<h5>handler</h5>
+		<div class="typeExp">
+			Type: Function(jQuery-Event eventObject)
+		</div>
+		<p class="parameterDescription">
+			A function to execute when the event is triggered. 
+		</p>
+	</div>
+	
+	<p class="description">
+		The .on() method attaches event handlers to the 'isActive' tiles.<br />
+		This method is like jQuery .on() method.<br />
+		The data to be passed to the handler includes the information about the tile on which the event is triggered.<br />
+		Passed the data as 'event', 'event.data["tileIndex"]' is it.<br />
+		Note: If you want to attaches the same function to all of the tiles, you should attaches it to the area instead of the tiles.
+	</p>
+	<h4 class="sampleText">
+		Example
+	</h4>
+	<pre class="sampleCode">&lt;script&gt;
+$(function(){
+  var tilamic = new Tilamic('#tiles', {
+    'aspectRatio': 853/ 1280
+  });
+
+  tilamic.on('click', function(event){
+    window.alert('Number ' + event.data['tileIndex'] + ' tile is clicked!');
+  });
+
+  var imgID = 1;
+  setInterval(function(){
+    tilamic.flip(imgID % 4);
+    imgID++;
+  }, 3000);
+});
+&lt;/script&gt;</pre>
+	<p class="sampleExp">
+		Click some one of the tiles.
+	</p>
+	<div id="tiles" style="width: 60%; cursor: pointer; margin-top: 0" class="preview">
+		<img src="../img/photo1.jpg" alt="photo1" />
+		<img src="../img/photo2.jpg" alt="photo2" />
+		<img src="../img/photo3.jpg" alt="photo3" />
+		<img src="../img/photo4.jpg" alt="photo4" />
+	</div>
+	<script>
+		$(function(){
+			var tilamic = new Tilamic('#tiles', {
+				'aspectRatio': 853/ 1280
+			});
+			
+			tilamic.on('click', function(event){
+				window.alert('Number ' + event.data['tileIndex'] + ' tile is clicked!');
+			});
+			
+			var imgID = 1;
+			setInterval(function(){
+				tilamic.flip(imgID % 4);
+				imgID++;
+			}, 3000);
+		});
+	</script>
+</div>
+{% endblock %}

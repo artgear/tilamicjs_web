@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<title>tilamic.js</title>
+		<link rel="shortcut icon" href="img/tilamicjs_fav.ico" />
+		<link href="stylesheets/common.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="stylesheets/index.css" media="all" rel="stylesheet" type="text/css" />
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="js/tilamic.min.js"></script>
+		<script src="js/demo.js"></script>
+{% include 'common/googleAnalytics.html' ignore missing %}
+	</head>
+	<body>
+{% include 'common/header.html' %}
+		<div class="sample">
+			<div id="tiles">
+				<img src="img/photo1.jpg" alt="photo1" />
+				<img src="img/photo2.jpg" alt="photo2" />
+				<img src="img/photo3.jpg" alt="photo3" />
+				<img src="img/photo4.jpg" alt="photo4" />
+			</div>
+			<p class="photosExp">
+				All of these photos are from <a href="http://unsplash.com/" target="_blank">Unsplash</a>.
+			</p>
+		</div>
+		<div class="texts">
+			<div class="features exp">
+				<h3>Features</h3>
+				<ul class="featuresList">
+					<li>
+						IE7, 8, 9 compatible (Not flip, fallback action)
+					</li>
+					<li>
+						Easy-to-customize flip sequence
+					</li>
+					<li>
+						Responsive
+					</li>
+				</ul>
+			</div>
+			<div class="howToInstall exp">
+				<h3>How to install</h3>
+				<ul class="installProcess">
+					<li>
+						<p>
+							1. Link jQuery and tilamic.js files. jQuery version must be 1.8.0 or newer.
+						</p>
+						<pre>&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="js/tilamic.js"&gt;&lt;/script&gt;</pre>
+					</li>
+					<li>
+						<p>
+							2. Create HTML like this.
+						</p>
+						<pre>&lt;div id="tiles"&gt;
+  &lt;img src="img/photo1.jpg" alt="photo1" /&gt;
+  &lt;img src="img/photo2.jpg" alt="photo2" /&gt;
+  &lt;img src="img/photo3.jpg" alt="photo3" /&gt;
+  &lt;img src="img/photo4.jpg" alt="photo4" /&gt;
+&lt;/div&gt;</pre>
+					</li>
+					<li>
+						<p>
+							3. Construct a new Tilamic object. First parameter: jQuery selector. Second: options.
+						</p>
+						<pre>$(document).ready(function(){
+  var tilamic = new Tilamic('#tiles', {
+    'rows': 3,
+    'cols': 5,
+    'aspectRatio': 853/1280
+});</pre>
+					</li>
+					<li>
+						<p>
+							3-1. If you need auto-resizing for responsive design, bind 'resize' method to window resize event.
+						</p>
+						<pre>$(window).on('resize', function(e){
+  tilamic.resize();
+});</pre>
+					</li>
+					<li>
+						<p>
+							4. Flip.
+						</p>
+						<pre>tilamic.flip(1); // flip all tiles in unison</pre>
+						<pre>tilamic.seqFlip(2); // flip all tiles in sequence</pre>
+					</li>
+					<li>
+						<p>
+							note: tilamic.js itself has not any methods for slideshow. If you need it, write like this.<br />
+						</p>
+						<pre>var count = 1;
+setInterval(function(){
+  tilamic.flip(count % 4);
+  count++
+}, 3000);</pre>
+					</li>
+				</ul>
+			</div>
+			<div class="customize exp">
+				<h3>Customize</h3>
+				<p>
+					To customize flip sequence, use a combination of two methods, "filter" and "setOrigin".<br />
+					The .filter() method constructs a new Tilamic object that have the tiles 'isActive' status is modified.<br />
+					The "setOrigin" methods construct a new Tilamic object which have the tiles the CSS3 transform-origin is modified.<br />
+					More information, see <a href="method/filter">filter</a> and <a href="method/setorigin">setOrigin</a>.
+				</p>
+				<pre>tilamic.filter(function(index, col, row){
+  return (col + row) % 2 == 0;
+}).setOrigin('centerOfAll').flip(3);</pre>
+			</div>
+			<div class="license exp">
+				<h3>License</h3>
+				<p>
+					This software is released under the MIT License.
+				</p>
+			</div>
+		</div>
+{% include 'common/footer.html' %}
+	</body>
+</html>

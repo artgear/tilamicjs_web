@@ -1,0 +1,29 @@
+@import "compass/reset/utilities";
+@import "compass/css3/";
+@import "compass/utilities/general/clearfix";
+
+.content {
+  max-width: 1280px;
+  width: 100%;
+  margin: 20px auto 0 auto;
+  h1 {
+    font-weight: bold;
+    font-size: 2em;
+  }
+}
+.headExp {
+  margin: 20px auto 0 0;
+}
+.verSet {
+  margin: 20px auto 0 0;
+  h2 {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  .verInfo {
+    margin: 10px auto 0 10px;
+  }
+  .download {
+    margin: 8px auto 0 10px;
+  }
+}

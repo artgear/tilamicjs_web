@@ -1,0 +1,68 @@
+{% extends 'methodTemplate.html' %}
+{% block methodExp %}
+<div>
+	<h1 class="methodName">.getCurrentImgID()</h1>
+	<h3 class="parameterSign">.getCurrentImgID(index)</h3>
+	<div class="parameterExp">
+		<h5>index<span class="defaultInfo">(default: 0)</span></h5>
+		<div class="typeExp">
+			Type: number
+		</div>
+		<p class="parameterDescription">
+			The 'index' is a zero-based integer indicating which tile to be checked.
+		</p>
+	</div>
+	<p class="description">
+		The .getCurrentImgID method returns the 'imgID' indicating the image on specified tile currently.
+	</p>
+	<h4 class="sampleText">
+		Example
+	</h4>
+	<pre class="sampleCode">&lt;div id="tiles" style="width: 60%;" class="preview"&gt;
+  &lt;img src="../img/photo1.jpg" alt="photo1" /&gt;
+  &lt;img src="../img/photo2.jpg" alt="photo2" /&gt;
+  &lt;img src="../img/photo3.jpg" alt="photo3" /&gt;
+  &lt;img src="../img/photo4.jpg" alt="photo4" /&gt;
+&lt;/div&gt;
+Current imgID is '&lt;span id="showImgID"&gt;&lt;/span&gt;'
+&lt;script&gt;
+  $(function(){
+    var tilamic = new Tilamic('#tiles', {
+      'aspectRatio': 853/ 1280
+    });
+
+    var imgID = 1;
+    setInterval(function(){
+      tilamic.flip(imgID % 4);
+      imgID++;
+      setTimeout(function(){
+        $('#showImgID').text(tilamic.getCurrentImgID());
+      }, 100);
+    }, 3000);
+  });
+&lt;/script&gt;</pre>
+	<div id="tiles" style="width: 60%;" class="preview">
+		<img src="../img/photo1.jpg" alt="photo1" />
+		<img src="../img/photo2.jpg" alt="photo2" />
+		<img src="../img/photo3.jpg" alt="photo3" />
+		<img src="../img/photo4.jpg" alt="photo4" />
+	</div>
+	Current imgID is '<span id="showImgID"></span>'
+	<script>
+		$(function(){
+			var tilamic = new Tilamic('#tiles', {
+				'aspectRatio': 853/ 1280
+			});
+			
+			var imgID = 1;
+			setInterval(function(){
+				tilamic.flip(imgID % 4);
+				imgID++;
+				setTimeout(function(){
+					$('#showImgID').text(tilamic.getCurrentImgID());
+				}, 100);
+			}, 3000);
+		});
+	</script>
+</div>
+{% endblock %}

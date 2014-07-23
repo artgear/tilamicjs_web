@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<title>tilamic.js Method-{{ data.method_name }}</title>
+		<link rel="shortcut icon" href="../img/tilamicjs_fav.ico" />
+		<link href="../stylesheets/common.css" media="all" rel="stylesheet" type="text/css" />
+		<link href="../stylesheets/method.css" media="all" rel="stylesheet" type="text/css" />
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="../js/tilamic.js"></script>
+{% include 'common/googleAnalytics.html' ignore missing %}
+	</head>
+	<body>
+{% include 'common/header.html' %}
+		<div class="content">
+			<div class="sideBar">
+				<h2>Methods</h2>
+				<ul class="methodList">
+					<li>
+						<a href="flip">flip</a>
+					</li>
+					<li>
+						<a href="seqFlip">seqFlip</a>
+					</li>
+					<li>
+						<a href="filter">filter</a>
+					</li>
+					<li>
+						<a href="setorigin">setOrigin</a>
+					</li>
+					<li>
+						<a href="resize">resize</a>
+					</li>
+					<li>
+						<a href="getcurrentimgid">getCurrentImgID</a>
+					</li>
+					<li>
+						<a href="on">on</a>
+					</li>
+				</ul>
+			</div>
+			<div class="methodExp">
+				{% block methodExp %}
+				{% endblock %}
+			</div>
+		</div>
+{% include 'common/footer.html' %}
+	</body>
+</html>

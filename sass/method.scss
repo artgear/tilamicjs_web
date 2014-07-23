@@ -1,0 +1,91 @@
+@import "compass/reset/utilities";
+@import "compass/css3/";
+@import "compass/utilities/general/clearfix";
+
+.content {
+  width: 100%;
+  max-width: 1280px;
+  margin: 20px auto 0 auto;
+  @include legacy-pie-clearfix();
+   a {
+     color: #000000;
+   }
+}
+
+.sideBar {
+  float: left;
+  width: 18%;
+  border: 1px solid #dddddd;
+  padding: 10px;
+  h2 {
+    font-size: 1.5em;
+  }
+  
+  .methodList {
+    list-style-type: disc;
+    margin: 10px auto auto 20px;
+    li {
+      height: 30px;
+    }
+  }
+}
+
+.methodExp {
+  float: right;
+  width: 75%;
+  border: 1px solid #dddddd;
+  padding: 10px;
+}
+.methodName {
+  font-size: 3em;
+}
+.parameterSign {
+  font-family: 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
+  margin-top: 20px;
+  background-color: #663399;
+  color: #ffffff;
+  padding: 5px;
+}
+.parameterExp {
+  border: 1px solid #aaaaaa;
+  padding: 5px;
+  h5 {
+    font-weight: bold;
+    .defaultInfo {
+      font-weight: normal;
+    }
+  }
+  .typeExp {
+    margin-top: 5px;
+  }
+  .parameterDescription {
+    margin-top: 5px;
+  }
+}
+.description {
+  margin-top: 10px;
+  line-height: 1.5em;
+}
+.sampleCode {
+  font-family: 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
+  margin-top: 10px;
+  background-color: #ffffff;
+  padding: 5px;
+}
+.optionsList {
+  margin: 10px auto 0 20px;
+  li {
+    padding: 5px;
+  }
+}
+.sampleText {
+  margin-top: 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.sampleExp {
+  margin-top: 20px;
+}
+.preview {
+  margin-top: 30px;
+}

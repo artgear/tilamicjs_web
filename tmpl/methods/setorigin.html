@@ -1,0 +1,73 @@
+{% extends 'methodTemplate.html' %}
+{% block methodExp %}
+<div>
+	<h1 class="methodName">.setOrigin()</h1>
+	<h3 class="parameterSign">.setOrigin(keyword)</h3>
+	<div class="parameterExp">
+		<h5>keyword</h5>
+		<div class="typeExp">
+			Type: String
+		</div>
+		<p class="parameterDescription">
+			Choose among from the following four.<br />
+			'each'<br />
+			'centerOfAll'<br />
+			'centerOfRow'<br />
+			'middleOfCol'
+		</p>
+	</div>
+	<p class="description">
+		The .setOrigin() method constructs a new Tilamic object that have the tiles CSS3 transform-origin property is modified.<br />
+		Passing 'each' keyword, the transform-origin of all of 'isActive' tiles will be set to the center of its own. <br />
+		Passing 'centerOfAll' keyword, the transform-origin of all of 'isActive' tiles will be set to the center of the area.<br />
+		Passing 'centerOfRow' keyword, the transform-origin of all of 'isActive' tiles will be set to the center of the row it belongs.<br />
+		Passing 'centerOfRow' keyword, the transform-origin of all of 'isActive' tiles will be set to the middle of the col it belongs.<br />
+		Passing something else, .setOrigin() method does not do anything.<br />
+		'isActive' is the attribute that represents the state of the tile. In the state immediately after construction of Tilamic object, all of its tiles are 'isActive'.For more information about 'isActive' see the <a href="filter">.filter()</a> method.
+	</p>
+	<h4 class="sampleText">
+		Example
+	</h4>
+	<pre class="sampleCode">$(function(){
+  var tilamic = new Tilamic('#tiles', {
+    'aspectRatio': 853/ 1280
+  });
+
+  var imgID = 1;
+  var isAxisX = false;
+  var originType = ['each', 'centerOfAll', 'centerOfRow', 'middleOfCol'];
+  
+  setInterval(function(){
+    tilamic.setOrigin(originType[imgID % 4]).flip(imgID % 4, {
+      'isAxisX': isAxisX
+    });
+    isAxisX = !isAxisX;
+    imgID++;
+  }, 2000);
+});</pre>
+	<div id="tiles" style="width: 60%;" class="preview">
+		<img src="../img/photo1.jpg" alt="photo1" />
+		<img src="../img/photo2.jpg" alt="photo2" />
+		<img src="../img/photo3.jpg" alt="photo3" />
+		<img src="../img/photo4.jpg" alt="photo4" />
+	</div>
+	<script>
+		$(function(){
+			var tilamic = new Tilamic('#tiles', {
+				'aspectRatio': 853/ 1280
+			});
+			
+			var imgID = 1;
+			var isAxisX = false;
+			var originType = ['each', 'centerOfAll', 'centerOfRow', 'middleOfCol'];
+			setInterval(function(){
+				tilamic.setOrigin(originType[imgID % 4]).flip(imgID % 4, {
+					'isAxisX': isAxisX
+				});
+				isAxisX = !isAxisX;
+				imgID++;
+			}, 2000);
+		});
+	</script>
+</div>
+{% endblock %}

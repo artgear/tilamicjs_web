@@ -1,4 +1,5 @@
 /**
+ * @license
  * tilamic.js
  * ver. 1.0.0
  * 

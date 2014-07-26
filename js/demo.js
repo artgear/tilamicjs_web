@@ -1,6 +1,6 @@
 /**
  * tilamic.js DEMO
- * ver. 20140717
+ * ver. 20140727
  * 
  * Copyright 2014 Artgear
  * http://d.hatena.ne.jp/artgear/
@@ -16,7 +16,7 @@
 			'cols': 5,
 			'aspectRatio': 853/1280
 		});
-		
+		// prepare a variety of selections of the tiles.
 		var selectPatterns = {};
 		selectPatterns['checkerA'] = tilamic.filter(function(index, col, row){
 			return (col + row) % 2 == 0;
@@ -35,6 +35,9 @@
 		selectPatterns['row2'] = tilamic.filter(function(index, col, row){
 			return row == 2;
 		});
+		
+		
+		// define a variety of flip patterns.
 		var flippatterns = [];
 		flippatterns[0] = function(imgID){
 			tilamic.setOrigin('middleOfCol').flip(imgID);
@@ -79,9 +82,20 @@
 		});
 		
 		var counter = 1;
-		setInterval(function(){
-			(flippatterns[counter % flippatterns.length])(counter % 4);
-			counter++;
-		}, 3000);
+		var timer = null;
+		var setTimer = function(){
+			//console.log('timerstart');
+			timer = setInterval(function(){
+				(flippatterns[counter % flippatterns.length])(counter % 4);
+				counter++;
+			}, 3000);
+		};
+		var clearTimer = function(){
+			//console.log('timerstop');
+			clearInterval(timer);
+		};
+		setTimer();
+		$(window).on('focus', setTimer);
+		$(window).on('blur', clearTimer);
 	});
 })(window, jQuery);
